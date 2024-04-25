@@ -40,7 +40,7 @@ namespace ChipSecuritySystem
 
             res = GetChipSequence(ExampleChips1);
             Console.WriteLine(res == null ? Constants.ErrorMessage : string.Join(" || ", res.Select(x => x.ToString())));
-
+            Console.ReadLine();
         }
 
         public static List<ColorChip> GetChipSequence( List<ColorChip> c)
@@ -51,7 +51,7 @@ namespace ChipSecuritySystem
             seq.Add(c.Where(x => x.EndColor == Color.Green).FirstOrDefault());
 
 
-            if (seq.Count == 2)
+            if (seq.Where(r => r != null).ToList().Count == 2)
             {
                 endcolor = seq[0].EndColor;
                 seq.RemoveAt(1);
